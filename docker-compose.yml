@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  fsr-debug:
+    build:
+      context: .
+      dockerfile: Dockerfile.debug
+    image: ${LOCAL_REGISTRY}:5002/fsr-debug:${TAG}
+    ports:
+      - 2230:2230
+      - 2222:22
+    privileged: true
+    network_mode: "host"     
+    #volumes:
+      #- type: bind
+      #  source: /home/torizon/76er
+      #  target: /home/torizon/76er
+      #  - type: bind
+    #    source: /home/torizon/budizledozer
+    #    target: /home/torizon/budizledozer
+      #- logini:/home/torizon
+
+  fsr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${DOCKER_LOGIN}/fsr:${TAG}
+    privileged: true
+    network_mode: "host"
