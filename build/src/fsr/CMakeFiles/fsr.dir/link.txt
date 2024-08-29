@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfsr.a  CMakeFiles/fsr.dir/fsr_driver_serial.cpp.o
+/usr/bin/ranlib libfsr.a

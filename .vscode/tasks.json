@@ -29,7 +29,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-arm-FSRs",
+                "cross-toolchain-arm-fsrs",
                 "cmake",
                 "-DCMAKE_BUILD_TYPE=Debug",
                 "-DCMAKE_CXX_COMPILER=arm-linux-gnueabihf-g++",
@@ -59,7 +59,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-arm64-FSRs",
+                "cross-toolchain-arm64-fsrs",
                 "cmake",
                 "-DCMAKE_BUILD_TYPE=Debug",
                 "-DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++",
@@ -110,7 +110,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-arm64-FSRs",
+                "cross-toolchain-arm64-fsrs",
                 "cmake",
                 "--build",
                 "build-arm64"
@@ -165,7 +165,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-arm-FSRs",
+                "cross-toolchain-arm-fsrs",
                 "cmake",
                 "--build",
                 "build-arm"
@@ -239,7 +239,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-arm-FSRs",
+                "cross-toolchain-arm-fsrs",
                 "cmake",
                 "--build",
                 "build-arm",
@@ -269,7 +269,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-arm64-FSRs",
+                "cross-toolchain-arm64-fsrs",
                 "cmake",
                 "--build",
                 "build-arm64",
@@ -299,7 +299,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-amd64-FSRs",
+                "cross-toolchain-amd64-fsrs",
                 "cmake",
                 "-DCMAKE_BUILD_TYPE=Debug",
                 "-DCMAKE_CXX_COMPILER=x86_64-linux-gnu-g++",
@@ -329,7 +329,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-amd64-FSRs",
+                "cross-toolchain-amd64-fsrs",
                 "cmake",
                 "--build",
                 "build-amd64"
@@ -384,7 +384,7 @@
                 "--rm",
                 "-v",
                 "${workspaceFolder}:${config:torizon_app_root}",
-                "cross-toolchain-amd64-FSRs",
+                "cross-toolchain-amd64-fsrs",
                 "cmake",
                 "--build",
                 "build-amd64",
@@ -515,7 +515,7 @@
                 "${command:docker_login}",
                 "${command:docker_tag}",
                 "${command:docker_registry}",
-                "FSRs",
+                "fsrs",
                 "${config:torizon_gpu}"
             ],
             "dependsOrder": "sequence",
@@ -1132,7 +1132,7 @@
                 "SSH_DEBUG_PORT=${config:torizon_debug_ssh_port}",
                 "--build-arg",
                 "GPU=${config:torizon_gpu}",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1176,7 +1176,7 @@
                 "SSH_DEBUG_PORT=${config:torizon_debug_ssh_port}",
                 "--build-arg",
                 "GPU=${config:torizon_gpu}",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1220,7 +1220,7 @@
                 "SSH_DEBUG_PORT=${config:torizon_debug_ssh_port}",
                 "--build-arg",
                 "GPU=${config:torizon_gpu}",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1264,7 +1264,7 @@
                 "SSH_DEBUG_PORT=${config:torizon_debug_ssh_port}",
                 "--build-arg",
                 "GPU=${config:torizon_gpu}",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1290,7 +1290,7 @@
                 "${workspaceFolder}/Dockerfile.sdk",
                 "${workspaceFolder}",
                 "-t",
-                "cross-toolchain-arm64-FSRs",
+                "cross-toolchain-arm64-fsrs",
                 "--build-arg",
                 "IMAGE_ARCH=arm64",
                 "--build-arg",
@@ -1324,7 +1324,7 @@
                 "${workspaceFolder}/Dockerfile.sdk",
                 "${workspaceFolder}",
                 "-t",
-                "cross-toolchain-arm-FSRs",
+                "cross-toolchain-arm-fsrs",
                 "--build-arg",
                 "IMAGE_ARCH=arm",
                 "--build-arg",
@@ -1356,7 +1356,7 @@
                 "${workspaceFolder}/Dockerfile.sdk",
                 "${workspaceFolder}",
                 "-t",
-                "cross-toolchain-amd64-FSRs",
+                "cross-toolchain-amd64-fsrs",
                 "--build-arg",
                 "IMAGE_ARCH=amd64",
                 "--build-arg",
@@ -1388,7 +1388,7 @@
                 "${workspaceFolder}/Dockerfile.sdk",
                 "${workspaceFolder}",
                 "-t",
-                "cross-toolchain-riscv64-FSRs",
+                "cross-toolchain-riscv64-fsrs",
                 "--build-arg",
                 "IMAGE_ARCH=riscv64",
                 "--build-arg",
@@ -1422,7 +1422,7 @@
                 "docker",
                 "compose",
                 "push",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "problemMatcher": "$msCompile",
@@ -1447,7 +1447,7 @@
                 "docker",
                 "compose",
                 "push",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "problemMatcher": "$msCompile",
@@ -1472,7 +1472,7 @@
                 "docker",
                 "compose",
                 "push",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "problemMatcher": "$msCompile",
@@ -1497,7 +1497,7 @@
                 "docker",
                 "compose",
                 "push",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "problemMatcher": "$msCompile",
@@ -1523,7 +1523,7 @@
                 "-o",
                 "StrictHostKeyChecking=no",
                 "torizon@${config:torizon_ip}",
-                "LOCAL_REGISTRY=${config:host_ip} TAG=arm64 docker compose pull FSRs-debug"
+                "LOCAL_REGISTRY=${config:host_ip} TAG=arm64 docker compose pull fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1552,7 +1552,7 @@
                 "-o",
                 "StrictHostKeyChecking=no",
                 "torizon@${config:torizon_ip}",
-                "LOCAL_REGISTRY=${config:host_ip} TAG=arm docker compose pull FSRs-debug"
+                "LOCAL_REGISTRY=${config:host_ip} TAG=arm docker compose pull fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1581,7 +1581,7 @@
                 "-o",
                 "StrictHostKeyChecking=no",
                 "torizon@${config:torizon_ip}",
-                "LOCAL_REGISTRY=${config:host_ip} TAG=amd64 docker compose pull FSRs-debug"
+                "LOCAL_REGISTRY=${config:host_ip} TAG=amd64 docker compose pull fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1610,7 +1610,7 @@
                 "-o",
                 "StrictHostKeyChecking=no",
                 "torizon@${config:torizon_ip}",
-                "LOCAL_REGISTRY=${config:host_ip} TAG=riscv64 docker compose pull FSRs-debug"
+                "LOCAL_REGISTRY=${config:host_ip} TAG=riscv64 docker compose pull fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1638,7 +1638,7 @@
                 "torizon",
                 "up",
                 "-d",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1666,7 +1666,7 @@
                 "torizon",
                 "up",
                 "-d",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1694,7 +1694,7 @@
                 "torizon",
                 "up",
                 "-d",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1722,7 +1722,7 @@
                 "torizon",
                 "up",
                 "-d",
-                "FSRs-debug"
+                "fsrs-debug"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1760,7 +1760,7 @@
                 "IMAGE_ARCH=arm64",
                 "--build-arg",
                 "GPU=${config:torizon_gpu}",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1798,7 +1798,7 @@
                 "IMAGE_ARCH=arm",
                 "--build-arg",
                 "GPU=${config:torizon_gpu}",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1836,7 +1836,7 @@
                 "IMAGE_ARCH=amd64",
                 "--build-arg",
                 "GPU=${config:torizon_gpu}",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1874,7 +1874,7 @@
                 "IMAGE_ARCH=riscv64",
                 "--build-arg",
                 "GPU=${config:torizon_gpu}",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -1902,7 +1902,7 @@
                 "docker",
                 "compose",
                 "push",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOn": [
                 "build-container-torizon-release-arm64"
@@ -1930,7 +1930,7 @@
                 "docker",
                 "compose",
                 "push",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOn": [
                 "build-container-torizon-release-arm"
@@ -1958,7 +1958,7 @@
                 "docker",
                 "compose",
                 "push",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOn": [
                 "build-container-torizon-release-amd64"
@@ -1986,7 +1986,7 @@
                 "docker",
                 "compose",
                 "push",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOn": [
                 "build-container-torizon-release-riscv64"
@@ -2015,7 +2015,7 @@
                 "-o",
                 "StrictHostKeyChecking=no",
                 "torizon@${config:torizon_ip}",
-                "DOCKER_LOGIN=${config:host_ip}:5002 TAG=arm64 docker compose pull FSRs"
+                "DOCKER_LOGIN=${config:host_ip}:5002 TAG=arm64 docker compose pull fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -2044,7 +2044,7 @@
                 "-o",
                 "StrictHostKeyChecking=no",
                 "torizon@${config:torizon_ip}",
-                "DOCKER_LOGIN=${config:host_ip}:5002 TAG=arm docker compose pull FSRs"
+                "DOCKER_LOGIN=${config:host_ip}:5002 TAG=arm docker compose pull fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -2073,7 +2073,7 @@
                 "-o",
                 "StrictHostKeyChecking=no",
                 "torizon@${config:torizon_ip}",
-                "DOCKER_LOGIN=${config:host_ip}:5002 TAG=amd64 docker compose pull FSRs"
+                "DOCKER_LOGIN=${config:host_ip}:5002 TAG=amd64 docker compose pull fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -2102,7 +2102,7 @@
                 "-o",
                 "StrictHostKeyChecking=no",
                 "torizon@${config:torizon_ip}",
-                "DOCKER_LOGIN=${config:host_ip}:5002 TAG=riscv64 docker compose pull FSRs"
+                "DOCKER_LOGIN=${config:host_ip}:5002 TAG=riscv64 docker compose pull fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -2128,7 +2128,7 @@
                 "-p",
                 "torizon",
                 "up",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -2161,7 +2161,7 @@
                 "-p",
                 "torizon",
                 "up",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -2194,7 +2194,7 @@
                 "-p",
                 "torizon",
                 "up",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -2227,7 +2227,7 @@
                 "-p",
                 "torizon",
                 "up",
-                "FSRs"
+                "fsrs"
             ],
             "dependsOrder": "sequence",
             "dependsOn": [

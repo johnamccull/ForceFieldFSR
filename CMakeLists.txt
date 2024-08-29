@@ -6,7 +6,7 @@ add_executable(ForceFieldFSR src/main.cpp)
 
 add_subdirectory(src)
 
-#target_link_libraries(ForceFieldFSR PUBLIC loadcell6dofinterface)
+target_link_libraries(ForceFieldFSR PUBLIC fsrinterface)
 
 set(CMAKE_SYSTEM_NAME Linux)
 

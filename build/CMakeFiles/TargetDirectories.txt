@@ -1,0 +1,12 @@
+/home/john/Documents/ForceFieldFSR/build/CMakeFiles/rebuild_cache.dir
+/home/john/Documents/ForceFieldFSR/build/CMakeFiles/edit_cache.dir
+/home/john/Documents/ForceFieldFSR/build/CMakeFiles/ForceFieldFSR.dir
+/home/john/Documents/ForceFieldFSR/build/src/CMakeFiles/rebuild_cache.dir
+/home/john/Documents/ForceFieldFSR/build/src/CMakeFiles/edit_cache.dir
+/home/john/Documents/ForceFieldFSR/build/src/CMakeFiles/fsrinterface.dir
+/home/john/Documents/ForceFieldFSR/build/src/fsr/CMakeFiles/rebuild_cache.dir
+/home/john/Documents/ForceFieldFSR/build/src/fsr/CMakeFiles/edit_cache.dir
+/home/john/Documents/ForceFieldFSR/build/src/fsr/CMakeFiles/fsr.dir
+/home/john/Documents/ForceFieldFSR/build/src/CppLinuxSerial/CMakeFiles/rebuild_cache.dir
+/home/john/Documents/ForceFieldFSR/build/src/CppLinuxSerial/CMakeFiles/edit_cache.dir
+/home/john/Documents/ForceFieldFSR/build/src/CppLinuxSerial/CMakeFiles/CppLinuxSerial.dir

@@ -44,6 +44,7 @@ RUN apt-get -q -y update && \
 	libssl-dev:arm64 \
 	libssl-dev:arm64 \
 	net-tools:arm64 \
+	libsocketcan-dev:arm64 \
     # __torizon_packages_dev_end__
 # DO NOT REMOVE THIS LABEL: this is used for VS Code automation
     && \
@@ -94,6 +95,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 	vim:arm64 \
 	sudo:arm64 \
 	net-tools:arm64 \
+	libsocketcan-dev:arm64 \
     # __torizon_packages_prod_end__
 # DO NOT REMOVE THIS LABEL: this is used for VS Code automation
 	&& apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*

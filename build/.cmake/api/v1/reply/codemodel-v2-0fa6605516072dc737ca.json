@@ -1,0 +1,137 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						3
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "src/fsr",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/fsr",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "src/CppLinuxSerial",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/CppLinuxSerial",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "ForceFieldFSR",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "CppLinuxSerial::@d87631a890559b5221d7",
+					"jsonFile" : "target-CppLinuxSerial-Debug-d16bb9b5da95808b981b.json",
+					"name" : "CppLinuxSerial",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ForceFieldFSR::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ForceFieldFSR-Debug-68fec88e971a2b76cfd5.json",
+					"name" : "ForceFieldFSR",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "fsr::@2446b668de7e9cefcb78",
+					"jsonFile" : "target-fsr-Debug-740008e766ef3ed8fe70.json",
+					"name" : "fsr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "fsrinterface::@145eef247bfb46b6828c",
+					"jsonFile" : "target-fsrinterface-Debug-61bb4442beb62933d13d.json",
+					"name" : "fsrinterface",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/john/Documents/ForceFieldFSR/build",
+		"source" : "/home/john/Documents/ForceFieldFSR"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

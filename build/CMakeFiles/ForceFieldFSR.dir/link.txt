@@ -1,0 +1,1 @@
+/usr/bin/c++  -g  -rdynamic CMakeFiles/ForceFieldFSR.dir/src/main.cpp.o  -o bin/ForceFieldFSR  src/libfsrinterface.a src/fsr/libfsr.a src/CppLinuxSerial/libCppLinuxSerial.a 

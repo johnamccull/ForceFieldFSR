@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/john/Documents/ForceFieldFSR/build",
+  "command": "/usr/bin/c++   -I/home/john/Documents/ForceFieldFSR/src/fsr -I/home/john/Documents/ForceFieldFSR/src/CppLinuxSerial  -g   -o CMakeFiles/ForceFieldFSR.dir/src/main.cpp.o -c /home/john/Documents/ForceFieldFSR/src/main.cpp",
+  "file": "/home/john/Documents/ForceFieldFSR/src/main.cpp"
+},
+{
+  "directory": "/home/john/Documents/ForceFieldFSR/build/src",
+  "command": "/usr/bin/c++   -I/home/john/Documents/ForceFieldFSR/src/fsr -I/home/john/Documents/ForceFieldFSR/src/CppLinuxSerial  -g   -o CMakeFiles/fsrinterface.dir/fsrInterface.cpp.o -c /home/john/Documents/ForceFieldFSR/src/fsrInterface.cpp",
+  "file": "/home/john/Documents/ForceFieldFSR/src/fsrInterface.cpp"
+},
+{
+  "directory": "/home/john/Documents/ForceFieldFSR/build/src/fsr",
+  "command": "/usr/bin/c++   -I/home/john/Documents/ForceFieldFSR/src/fsr -I/home/john/Documents/ForceFieldFSR/src/CppLinuxSerial  -g   -o CMakeFiles/fsr.dir/fsr_driver_serial.cpp.o -c /home/john/Documents/ForceFieldFSR/src/fsr/fsr_driver_serial.cpp",
+  "file": "/home/john/Documents/ForceFieldFSR/src/fsr/fsr_driver_serial.cpp"
+},
+{
+  "directory": "/home/john/Documents/ForceFieldFSR/build/src/CppLinuxSerial",
+  "command": "/usr/bin/c++   -I/home/john/Documents/ForceFieldFSR/src/CppLinuxSerial  -g   -o CMakeFiles/CppLinuxSerial.dir/SerialPort.cpp.o -c /home/john/Documents/ForceFieldFSR/src/CppLinuxSerial/SerialPort.cpp",
+  "file": "/home/john/Documents/ForceFieldFSR/src/CppLinuxSerial/SerialPort.cpp"
+}
+]
