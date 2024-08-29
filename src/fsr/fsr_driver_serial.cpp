@@ -85,7 +85,7 @@ void fsr_driver_serial::fsr_decodeBuffer(const uint8_t* rcvbuf) {
     }
 }
 
-const std::vector<uint16_t>& fsr_driver_serial::get_dataBuf() const {
+std::vector<uint16_t>& fsr_driver_serial::get_dataBuf(){
     return databuf;
 }
 

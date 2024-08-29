@@ -8,9 +8,8 @@ void fsrInterface::initialize() {
 }
 
 void fsrInterface::updateSensorState() {
-    if (fsrDriver.loadCell_read(&serialPort) > 0) {
-        sensorData = fsrDriver.get_dataBuf();
-    }
+    fsrDriver.loadCell_read(&serialPort);
+    sensorData = fsrDriver.get_dataBuf();
 }
 
 float fsrInterface::getChannelReading(int channelNum) {

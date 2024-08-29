@@ -27,7 +27,7 @@ public:
 
     void loadCell_init(mn::CppLinuxSerial::SerialPort* port);
     int loadCell_read(mn::CppLinuxSerial::SerialPort* port);
-    const std::vector<uint16_t>& get_dataBuf() const;
+    std::vector<uint16_t>& get_dataBuf();
 
     static uint16_t reverseUint16Bytes(uint16_t value);
 };

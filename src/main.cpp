@@ -30,7 +30,7 @@ int main() {
     std::cout << "Beginning Readings" << std::endl;
     while(count <= totalCount){
         m_fsr->updateSensorState();
-        cout << "Ch1: " << m_fsr->getChannelReading(0) << endl;
+        cout << "ch1: " << m_fsr->getChannelReading(0) << " ch2: " << m_fsr->getChannelReading(1) << " ch3: " << m_fsr->getChannelReading(2) << endl;
         count++;
     }
 
