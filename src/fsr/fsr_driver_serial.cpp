@@ -1,21 +1,10 @@
 #include "fsr_driver_serial.h"
 #include <iostream>
-#include <vector>
-#include <chrono>
+#include <cstring>
 #include <thread>
-#include <string.h>
-#include <unistd.h>
-#include <algorithm> 
-#include <bitset>
-#include <climits>
-#include <numeric> 
 #include <iomanip>
 
 const std::string fsr_driver_serial::DEVICE = "/dev/ttyACM0";
-
-fsr_driver_serial::fsr_driver_serial(){
-	expected_headerFrame = 0xAA55;
-}
 
 /**
  * @brief		Configure USB port to read from FSR
@@ -23,7 +12,7 @@ fsr_driver_serial::fsr_driver_serial(){
 void fsr_driver_serial::loadCell_init(mn::CppLinuxSerial::SerialPort* port) {
     port->SetDevice(DEVICE);
     port->SetBaudRate(BAUDRATE);
-    port->SetTimeout(0);  // Set to asynchronous mode
+    port->SetTimeout(0);  // Asynchronous mode
     port->Open();
 }
 
@@ -32,46 +21,21 @@ void fsr_driver_serial::loadCell_init(mn::CppLinuxSerial::SerialPort* port) {
  * @return		Number of bytes read
  */
 int fsr_driver_serial::loadCell_read(mn::CppLinuxSerial::SerialPort* port) {
+    while (!isAligned) {
+        port->Read(usb_receive_buf, USB_PACKET_LENGTH);
+        fsr_decodeBuffer(usb_receive_buf);
 
-	static int cnt = 0;
-    // Aligment sequence
-	while (!isAligned) {
-		port->Read(usb_receive_buf, USB_PACKET_LENGTH);
-		//std::cout << "read successful\n";
-		fsr_decodeBuffer(usb_receive_buf);
+        if (headerFrame == EXPECTED_HEADER_FRAME) {
+            isAligned = true;
+        } else {
+            port->Close();
+            std::this_thread::sleep_for(std::chrono::milliseconds(20));
+            port->Open();
+        }
+    }
 
-		std::cout << "Misaligned data, realigning..." << std::endl;
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(20));
-
-		//if ((cnt>20)) {
-		//	cnt = 0;
-		//	std::cout << "still trying to align\n";
-		//}
-
-		//std::cout << "tick:" <<_loadData->osTime_ms <<", error:"<< test_cnt 
-		//	<< ", state:"<< (int) _loadData->gpioState << ", data[0]:" << _loadData->databuf[0] <<std::endl;
-
-		std::cout << "headerFrame: " << std::hex << headerFrame << std::endl;
-		if ((float)headerFrame == expected_headerFrame) {
-			isAligned = true;
-			std::cout << "Load cell data successfully aligned." << std::endl;
-		} else {
-			port->Close();
-			sleep(0.02);
-
-			port->Open();  
-			sleep(0.02);
-		}
-
-		cnt++;
-	}
-
-	port->Read(usb_receive_buf, USB_PACKET_LENGTH);
-	//std::cout << "read successful\n";
-	fsr_decodeBuffer(usb_receive_buf);
-	//std::cout << "decoded\n";
-
+    port->Read(usb_receive_buf, USB_PACKET_LENGTH);
+    fsr_decodeBuffer(usb_receive_buf);
     return 0;
 }
 
@@ -81,8 +45,8 @@ int fsr_driver_serial::loadCell_read(mn::CppLinuxSerial::SerialPort* port) {
  * Decoding is done by memcopying the data to a struct.  This struct is
  * matched to the size and format of the expected data
  */
-void fsr_driver_serial::fsr_decodeBuffer(uint8_t* rcvbuf){
-	size_t offset = 0;
+void fsr_driver_serial::fsr_decodeBuffer(const uint8_t* rcvbuf) {
+    size_t offset = 0;
 
 	// Print the raw buffer data
     /*std::cout << "Raw buffer data: ";
@@ -91,51 +55,40 @@ void fsr_driver_serial::fsr_decodeBuffer(uint8_t* rcvbuf){
     }
     std::cout << std::dec << std::endl; // Reset to decimal*/
 
-    // 1. Copy headerFrame (2 bytes)
+	// 1. Copy headerFrame (2 bytes)
     memcpy(&headerFrame, rcvbuf + offset, sizeof(headerFrame));
+    headerFrame = reverseUint16Bytes(headerFrame);
     offset += sizeof(headerFrame);
 
-	headerFrame = reverseUint16Bytes(headerFrame);
-    
 	// 2. Copy databuf (6 bytes, 3 uint16_t elements)
-    databuf.resize(3); // Ensure the vector has enough space
+	databuf.resize(3); 
     for (size_t i = 0; i < databuf.size(); ++i) {
         uint16_t tempValue;
         memcpy(&tempValue, rcvbuf + offset, sizeof(tempValue));
         databuf[i] = reverseUint16Bytes(tempValue);
-        offset += sizeof(uint16_t);
+        offset += sizeof(tempValue);
     }
 
-
-	// Print the decoded values
-    /*std::cout << "Decoded headerFrame: 0x" << std::hex << std::setw(4) << std::setfill('0') << headerFrame << std::dec << std::endl;
-    std::cout << "Decoded databuf values: ";
+	// Print decoded values in one line
+    //std::cout << "Decoded headerFrame: 0x" << std::hex << std::setw(4) << std::setfill('0') << headerFrame << " | ";
+	/*std::cout << "Decoded databuf values: ";
     for (const auto& value : databuf) {
-        std::cout << value << " ";
+        // Convert uint16_t to float (assuming raw data and no specific scaling is needed)
+        float floatValue = static_cast<float>(value); // Replace this with actual conversion if needed
+        std::cout << std::fixed << std::setprecision(2) << floatValue << " ";
     }
-    std::cout << std::endl;*/
+    std::cout << std::endl; // Reset to decimal
+	*/
 
-	if (headerFrame != expected_headerFrame) {
-		isAligned = false;
-		std::cout << "Load cell IS NOT ALIGNED." << std::endl;
-	}
+    if (headerFrame != EXPECTED_HEADER_FRAME) {
+        isAligned = false;
+    }
 }
 
-std::vector<uint16_t>& fsr_driver_serial::get_dataBuf() {
+const std::vector<uint16_t>& fsr_driver_serial::get_dataBuf() const {
     return databuf;
 }
 
 uint16_t fsr_driver_serial::reverseUint16Bytes(uint16_t value) {
-    uint8_t bytes[2];
-    // Copy the uint16_t into a byte array
-    memcpy(bytes, &value, sizeof(value));
-
-    // Reverse the byte array
-    std::reverse(bytes, bytes + sizeof(bytes));
-
-    uint16_t reversedValue;
-    // Copy the reversed byte array back into a uint16_t
-    memcpy(&reversedValue, bytes, sizeof(reversedValue));
-
-    return reversedValue;
+    return (value >> 8) | (value << 8);
 }
