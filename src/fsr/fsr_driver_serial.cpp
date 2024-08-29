@@ -11,7 +11,7 @@ const std::string fsr_driver_serial::DEVICE = "/dev/ttyACM0";
  */
 void fsr_driver_serial::loadCell_init(mn::CppLinuxSerial::SerialPort* port) {
     port->SetDevice(DEVICE);
-    port->SetBaudRate(BAUDRATE);
+    port->SetBaudRate(FSR_BAUDRATE);
     port->SetTimeout(0);  // Asynchronous mode
     port->Open();
 }
@@ -22,7 +22,7 @@ void fsr_driver_serial::loadCell_init(mn::CppLinuxSerial::SerialPort* port) {
  */
 int fsr_driver_serial::loadCell_read(mn::CppLinuxSerial::SerialPort* port) {
     while (!isAligned) {
-        port->Read(usb_receive_buf, USB_PACKET_LENGTH);
+        port->Read(usb_receive_buf, FSR_PACKET_LENGTH);
         fsr_decodeBuffer(usb_receive_buf);
 
         if (headerFrame == EXPECTED_HEADER_FRAME) {
@@ -34,7 +34,7 @@ int fsr_driver_serial::loadCell_read(mn::CppLinuxSerial::SerialPort* port) {
         }
     }
 
-    port->Read(usb_receive_buf, USB_PACKET_LENGTH);
+    port->Read(usb_receive_buf, FSR_PACKET_LENGTH);
     fsr_decodeBuffer(usb_receive_buf);
     return 0;
 }
@@ -50,7 +50,7 @@ void fsr_driver_serial::fsr_decodeBuffer(const uint8_t* rcvbuf) {
 
 	// Print the raw buffer data
     /*std::cout << "Raw buffer data: ";
-    for (size_t i = 0; i < USB_PACKET_LENGTH; ++i) {
+    for (size_t i = 0; i < FSR_PACKET_LENGTH; ++i) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(rcvbuf[i]) << " ";
     }
     std::cout << std::dec << std::endl; // Reset to decimal*/
